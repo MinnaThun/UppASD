@@ -40,6 +40,8 @@
 !> https://global.oup.com/academic/product/atomistic-spin-dynamics-9780198788669
 !
 !------------------------------------------------------------------------------------
+
+!!!! Ivan was here!
 module uppasd
    !
    use omp_lib
