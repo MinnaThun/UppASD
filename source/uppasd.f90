@@ -10,7 +10,7 @@
 !*       Jonathan Chico             Thomas Nystrand               *
 !*       Bjorn Skubic               Olle Eriksson                 *
 !*       Andrea Taroni              Lars Nordstrom                *
-!*       + other contributors.                                    *
+!*       + Minna             .                                    *
 !*                                                                *
 !*       Division of Materials Theory                             *
 !*       Department of Physics and Materials Science              *
