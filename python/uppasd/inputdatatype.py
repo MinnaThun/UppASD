@@ -1281,7 +1281,71 @@ class ham_inp_t(f90wrap.runtime.FortranDerivedType):
     @bq_redcoord.setter
     def bq_redcoord(self, bq_redcoord):
         self.bq_redcoord[...] = bq_redcoord
+
+    @property
+    def do_tife(self):
+        """
+        Element do_tife ftype=integer  pytype=int
+         
+        """
+  
+        return _uppasd.f90wrap_ham_inp_t__get__do_tife(self._handle)
     
+    @do_tife.setter
+    def do_tife(self, do_tife):
+        _uppasd.f90wrap_ham_inp_t__set__do_tife(self._handle, do_tife)
+    
+    @property
+    def tifefile(self):
+        """
+        Element bqfile ftype=character(len=35) pytype=str
+        
+        
+        """
+        return _uppasd.f90wrap_ham_inp_t__get__tifefile(self._handle)
+    
+    @tifefile.setter
+    def bqfile(self, tifefile):
+        _uppasd.f90wrap_ham_inp_t__set__tifefile(self._handle, tifefile)
+
+
+    @property
+    def epsilon_tife(self):
+        """
+        Element epsilon_tife ftype=complex(dblprec) pytype=complex
+        
+        """
+        array_ndim, array_type, array_shape, array_handle = \
+            _uppasd.f90wrap_ham_inp_t__array__epsilon_tife(self._handle)
+        if array_handle in self._arrays:
+            epsilon_tife = self._arrays[array_handle]
+        else:
+            epsilon_tife = f90wrap.runtime.get_array(f90wrap.runtime.sizeof_fortran_t,
+                                    self._handle,
+                                    _uppasd.f90wrap_ham_inp_t__array__epsilon_tife)
+            self._arrays[array_handle] = epsilon_tife
+        return epsilon_tife
+    
+    @epsilon_tife.setter
+    def epsilon_tife(self, epsilon_tife):
+        self.epsilon_tife[...] = epsilon_tife
+    
+
+     
+    @property
+    def alpha_tife(self):
+        """
+        Element dm_scale ftype=real(dblprec) pytype=float
+        
+        
+        """
+        return _uppasd.f90wrap_ham_inp_t__get__alpha_tife(self._handle)
+    
+    @alpha_tife.setter
+    def alpha_tife(self, alpha_tife):
+        _uppasd.f90wrap_ham_inp_t__set__alpha_tife(self._handle, alpha_tife)
+
+
     @property
     def do_ring(self):
         """
@@ -1724,6 +1788,14 @@ class ham_inp_t(f90wrap.runtime.FortranDerivedType):
         ret.append(repr(self.jc_bq))
         ret.append(',\n    bq_redcoord : ')
         ret.append(repr(self.bq_redcoord))
+        ret.append(',\n    do_tife : ')
+        ret.append(repr(self.do_tife))
+        ret.append(',\n    tifefile : ')
+        ret.append(repr(self.tifefile))
+        ret.append(',\n    epsilon_tife: ')
+        ret.append(repr(self.epsilon_tife))
+        ret.append(',\n    alpha_tife : ')
+        ret.append(repr(self.alpha_tife))
         ret.append(',\n    do_ring : ')
         ret.append(repr(self.do_ring))
         ret.append(',\n    max_no_ringshells : ')

@@ -244,6 +244,17 @@ def read_bqdata():
     """
     _uppasd.f90wrap_read_bqdata()
 
+
+def read_tifedata():
+    """
+    read_tifedata()
+    
+    
+    """
+    _uppasd.f90wrap_read_tifedata()
+
+
+
 def read_ringdata():
     """
     read_ringdata()
