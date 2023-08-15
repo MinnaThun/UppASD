@@ -1,0 +1,23 @@
+simid: HeisWire
+date: 2023-07-31
+git_revision: v6.0.2-43-g4715
+siminfo:
+    temperature:    0.0000000         
+    timestep:       0.10000000E-15    
+    damping:        0.0000000         
+    nstep:          15005   
+    mode:           LLG
+    alat:           1.0000000         
+    sc_step:        30      
+    sc_nstep:       50      
+    qfile:          ./qfile
+measurables:
+    averages:       Yes
+    trajectories:   No 
+    moments:        Yes
+    sqw:            Yes
+    ams:            Yes
+    nc-ams:         No 
+    totenergy:      Yes
+    cumulants:      No 
+    coord:          Yes

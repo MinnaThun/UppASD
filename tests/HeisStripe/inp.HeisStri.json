@@ -1,0 +1,41 @@
+{
+             "simid"  :    "HeisStri" ,
+             "ncell"  :    [       10 ,        1 ,      100 ] , 
+                "bc"  :    [ "0" , "0" , "P" ] , 
+              "cell"  :  [
+                           [    1.00000     ,    0.00000     ,    0.00000     ] , 
+                           [    0.00000     ,    1.00000     ,    0.00000     ] , 
+                           [    0.00000     ,    0.00000     ,    1.00000     ]  
+                         ],
+         "anumb_inp"  :         1 ,
+         "atype_inp"  :         1 ,
+               "bas"  :  [
+                           [    0.00000     ,    0.00000     ,    0.00000     ]  
+                         ],
+                "na"  :         1 ,
+                "nt"  :         1 ,
+               "sym"  :         1 ,
+               "llg"  :         1 ,
+           "sdealgh"  :         1 ,
+         "mensemble"  :         1 ,
+           "initmag"  :         1 ,
+             "mseed"  :         1 ,
+           "ip_mode"  :    "N" ,
+         "ip_hfield"  :    [    0.00000     ,    0.00000     ,    0.00000     ] , 
+              "mode"  :   "S" ,
+              "temp"  :     0.00000     ,
+            "hfield"  :    [    0.00000     ,    0.00000     ,    0.00000     ] , 
+             "nstep"  :      1500 ,
+          "timestep"  :    0.100000E-15 ,
+           "damping"  :    0.100000     ,
+ "real_time_measure"  :   "N" ,
+           "do_avrg"  :   "Y" ,
+         "avrg_step"  :        10 ,
+        "do_tottraj"  :   "N" ,
+           "do_cumu"  :   "N" ,
+        "plotenergy"  :         1 ,
+       "do_spintemp"  :   "N" ,
+             "ntraj"  :         0 ,
+             "do_sc"  :    "N" ,
+           "comment"  :    "Input data from UppASD simulation" 
+  } 

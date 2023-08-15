@@ -1,0 +1,20 @@
+simid: kagome_T
+date: 2023-07-31
+git_revision: v6.0.2-43-g4715
+siminfo:
+    temperature:    0.0000000         
+    timestep:       0.10000000E-15    
+    damping:        0.50000000        
+    nstep:          15000   
+    mode:           LLG
+    alat:           1.0000000         
+measurables:
+    averages:       Yes
+    trajectories:   Yes
+    moments:        No 
+    sqw:            No 
+    ams:            No 
+    nc-ams:         No 
+    totenergy:      Yes
+    cumulants:      No 
+    coord:          Yes

@@ -1,0 +1,49 @@
+{
+             "simid"  :    "kagome_T" ,
+             "ncell"  :    [       12 ,       12 ,        1 ] , 
+                "bc"  :    [ "P" , "P" , "0" ] , 
+              "cell"  :  [
+                           [    2.00000     ,    0.00000     ,    0.00000     ] , 
+                           [    1.00000     ,    1.73205     ,    0.00000     ] , 
+                           [    0.00000     ,    0.00000     ,    1.00000     ]  
+                         ],
+         "anumb_inp"  :    [        1 ,        2 ,        3 ] , 
+         "atype_inp"  :    [        1 ,        2 ,        3 ] , 
+               "bas"  :  [
+                           [    0.00000     ,    0.00000     ,    0.00000     ] , 
+                           [    1.00000     ,    0.00000     ,    0.00000     ] , 
+                           [   0.500000     ,   0.866025     ,    0.00000     ]  
+                         ],
+                "na"  :         3 ,
+                "nt"  :         3 ,
+               "sym"  :         0 ,
+               "llg"  :         1 ,
+           "sdealgh"  :         1 ,
+         "mensemble"  :         1 ,
+           "initmag"  :         3 ,
+           "moments"  :  [
+                           [   0.821995     ,   0.569495     ,    0.00000     ] , 
+                           [   0.821995     ,  -0.569495     ,    0.00000     ] , 
+                           [    0.00000     ,    1.00000     ,    0.00000     ]  
+                         ],
+           "ip_mode"  :    "N" ,
+         "ip_hfield"  :    [    0.00000     ,    0.00000     ,    0.00000     ] , 
+              "mode"  :   "S" ,
+              "temp"  :     0.00000     ,
+            "hfield"  :    [    0.00000     ,    0.00000     ,    0.00000     ] , 
+             "nstep"  :     15000 ,
+          "timestep"  :    0.100000E-15 ,
+           "damping"  :    0.500000     ,
+ "real_time_measure"  :   "N" ,
+           "do_avrg"  :   "Y" ,
+         "avrg_step"  :       100 ,
+        "do_tottraj"  :   "N" ,
+           "do_cumu"  :   "N" ,
+        "plotenergy"  :         1 ,
+       "do_spintemp"  :   "N" ,
+             "ntraj"  :         1 ,
+         "traj_atom"  :         2 ,
+         "traj_step"  :       100 ,
+             "do_sc"  :    "N" ,
+           "comment"  :    "Input data from UppASD simulation" 
+  } 
