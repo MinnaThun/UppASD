@@ -22,7 +22,6 @@ module prn_averages
    character(len=1) :: do_proj_avrg             !< Measure projected averages (Y/A/N)
    character(len=1) :: do_projch_avrg           !< Measure chemically projected averages (Y/N)
    character(len=1) :: do_cumu_proj             !< Measure Binder cumulant, susceptibility, and specific heat(Y/N)
-
    ! Local calculations for printing
    integer :: Navrgcum        !< Counter for number of cumulated averages
    real(dblprec) :: cumuw     !< Weight for current sample to cumulant

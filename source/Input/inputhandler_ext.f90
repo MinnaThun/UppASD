@@ -42,7 +42,7 @@ module InputHandler_ext
    public :: allocate_hamiltonianinput, read_exchange_getMaxNoShells
    public :: read_positions, read_positions_alloy, read_moments, read_exchange
    public :: read_exchange_tensor, read_exchange_build_tensor, read_anisotropy_alloy, read_anisotropy, read_sadata
-   public :: read_dmdata, read_pddata, read_chirdata, read_biqdmdata, read_bqdata, read_ringdata, read_sitefield
+   public :: read_dmdata, read_pddata, read_chirdata, read_biqdmdata, read_bqdata, read_tifedata, read_ringdata, read_sitefield
    public :: read_ip_damping, read_ip_damping_alloy, read_damping, read_damping_alloy, read_fourxdata
    public :: read_barriers, read_fixed_moments, read_exchange_getNeighVec
 
@@ -2145,7 +2145,105 @@ contains
       close (ifileno)
 
    end subroutine read_bqdata
+
+
+   !---------------------------------------------------------------------------------
+   ! SUBROUTINE: read_tifedata
+   !> @brief Read the variables for the tife interaction
+   !---------------------------------------------------------------------------------
+
+   subroutine read_tifedata(Natom, Mensemble,emom)
+
+      implicit none
+
+      complex(dblprec), dimension(3):: epsilon_conj
+      integer :: i
+      complex(dblprec) :: Lx
+      complex(dblprec) :: Ly
+      complex(dblprec) :: Lz
+      real(dblprec), dimension(:,:,:), allocatable :: berry_phase
+
+
+      real(dblprec), dimension(:,:,:), allocatable :: dxyz_vec
+      integer, dimension(:,:), allocatable :: dxyz_atom
+      integer, dimension(:), allocatable :: dxyz_list
+
+      integer, intent(in) :: Natom !< Number of atoms in system
+      integer, intent(in) :: Mensemble !< Number of ensembles
+      real(dblprec), dimension(3,Natom, Mensemble), intent(in) :: emom   !< Current unit moment vector
+      real(dblprec), dimension(:,:,:), allocatable :: dmomdr  !< Divergence of magnetic moment vector
+
+
+      integer :: iatom, jneigh, jatom, k
+      real(dblprec) :: dx, dy, dz, d_mom_x, d_mom_y, d_mom_z
+      
+
+      !real(dblprec), dimension(3) :: real_parts, imag_parts
+      !real(dblprec) :: real_part, imag_part
+
+      open(ifileno, file=ham_inp%tifefile)
+      read(ifileno,*) ham_inp%alpha_tife
+      read(ifileno, *) ham_inp%epsilon_tife
+
+      print *, ham_inp%alpha_tife
+      print *, ham_inp%epsilon_tife
    
+      do i = 1, 3
+         print *, CONJG(ham_inp%epsilon_tife(i))
+      end do
+
+      Lx =  ham_inp%alpha_tife* AIMAG((ham_inp%epsilon_tife(2)*CONJG(ham_inp%epsilon_tife(3)) - ham_inp%epsilon_tife(3)*CONJG(ham_inp%epsilon_tife(2)))) !the crossproduct of complex value and it's complex conjugate is always purely imaginary
+      Ly =  ham_inp%alpha_tife* AIMAG((ham_inp%epsilon_tife(3)*CONJG(ham_inp%epsilon_tife(1)) - ham_inp%epsilon_tife(1)*CONJG(ham_inp%epsilon_tife(3))))
+      Lz =  ham_inp%alpha_tife* AIMAG((ham_inp%epsilon_tife(1)*CONJG(ham_inp%epsilon_tife(2)) - ham_inp%epsilon_tife(2)*CONJG(ham_inp%epsilon_tife(1))))
+
+      print *, Lx,Ly,Lz
+
+
+      do iatom=1, Natom
+         do k=1, Mensemble
+            do jneigh=1, dxyz_list(iatom)
+               jatom=dxyz_atom(jneigh,iatom)
+               d_mom_x=emom(1,jatom,k)-emom(1,iatom,k)
+               dx=dxyz_vec(1,jneigh,iatom)
+               d_mom_y=emom(2,jatom,k)-emom(2,iatom,k)
+               dy=dxyz_vec(2,jneigh,iatom)
+               d_mom_z=emom(3,jatom,k)-emom(3,iatom,k)
+               dz=dxyz_vec(3,jneigh,iatom)
+
+               if(abs(dx)>1.0d-7) then
+                  dmomdr(1,iatom,k)=dmomdr(1,iatom,k) + (d_mom_x/dx)
+                  dmomdr(2,iatom,k)=dmomdr(2,iatom,k) + (d_mom_y/dx)
+                  dmomdr(3,iatom,k)=dmomdr(3,iatom,k) + (d_mom_z/dx)
+               end if
+               if(abs(dy)>1.0d-7) then
+                  dmomdr(1,iatom,k)=dmomdr(1,iatom,k) + (d_mom_x/dy)
+                  dmomdr(2,iatom,k)=dmomdr(2,iatom,k) + (d_mom_y/dy)
+                  dmomdr(3,iatom,k)=dmomdr(3,iatom,k) + (d_mom_z/dy)
+               end if
+               if(abs(dz)>1.0d-7) then
+                  dmomdr(1,iatom,k)=dmomdr(1,iatom,k) + (d_mom_x/dz)
+                  dmomdr(2,iatom,k)=dmomdr(2,iatom,k) + (d_mom_y/dz)
+                  dmomdr(3,iatom,k)=dmomdr(3,iatom,k) + (d_mom_z/dz)
+               end if
+
+            end do
+
+            dmomdr(1,iatom,k)=dmomdr(1,iatom,k)/dxyz_list(iatom)
+            dmomdr(2,iatom,k)=dmomdr(2,iatom,k)/dxyz_list(iatom)
+            dmomdr(3,iatom,k)=dmomdr(3,iatom,k)/dxyz_list(iatom)
+
+         end do
+      end do
+
+      print *,  dmomdr
+
+
+      !write(*, *) "Epsilon", ":",  ham_inp%epsilon_tife
+      
+   end subroutine read_tifedata
+
+
+
    !---------------------------------------------------------------------------------
    ! SUBROUTINE: read_ringdata
    !> @brief Read the variables for four-spin ring interaction

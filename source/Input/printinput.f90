@@ -281,7 +281,7 @@ contains
          if(do_avrg .eq. 'Y') then
             call json_write(file_id,(/avrg_step/),1,key='avrg_step')
          end if
-
+         
          call json_write(file_id,(/do_tottraj/),1,key='do_tottraj')
          if(do_tottraj .eq. 'Y') then
             call json_write(file_id,(/tottraj_step/),1,key='tottraj_step')

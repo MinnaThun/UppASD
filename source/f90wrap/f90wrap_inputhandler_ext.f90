@@ -141,6 +141,13 @@ subroutine f90wrap_read_bqdata
     call read_bqdata()
 end subroutine f90wrap_read_bqdata
 
+subroutine f90wrap_read_tifedata
+    use inputhandler_ext, only: read_tifedata
+    implicit none
+    
+    call read_tifedata()
+end subroutine f90wrap_read_tifedata
+
 subroutine f90wrap_read_ringdata
     use inputhandler_ext, only: read_ringdata
     implicit none

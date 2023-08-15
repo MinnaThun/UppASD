@@ -25,8 +25,6 @@
 !*                                                                *
 !******************************************************************
 
-!hello -Minna was here
-
 !------------------------------------------------------------------------------------
 ! MODULE: uppasd
 !
@@ -760,12 +758,7 @@ contains
       end if
       !----------------------------!
       ! Reading in data from files !
-      !----------------------------! 
-      if(ham_inp%do_tife==1) then
-         write (*,'(1x,a)') "Print topological induced faradayeffect"
-      end if
-
-      
+      !----------------------------!  
 
 
     if (do_multiscale) then
@@ -949,6 +942,7 @@ contains
       if(ham_inp%do_pd==1)         call read_pddata()
       if(ham_inp%do_chir==1)       call read_chirdata()
       if(ham_inp%do_bq==1)         call read_bqdata()
+      if(ham_inp%do_tife==1)       call read_tifedata(Natom, Mensemble,emom)
       if(ham_inp%do_ring==1)       call read_ringdata()      
       if(ham_inp%do_biqdm==1)      call read_biqdmdata()
       if(do_ll==1)         call read_lldata()
@@ -1514,6 +1508,7 @@ contains
 
       ! Print logo
       write (*,'(1x, a)')    "--------------------------------------------------------------"
+      write (*,'(1x, a)')    "--------------------------------------------------------------"
       write (*,'(1x, a)')    "            __  __          ___   _______    ____  ___        "
       write (*,'(1x, a)')    "           / / / /__  ___  / _ | / __/ _ \  / __/ / _ \       "
       write (*,'(1x, a)')    "          / /_/ / _ \/ _ \/ __ |_\ \/ // / / _ \_/ // /       "
@@ -1534,14 +1529,15 @@ contains
       write (*,'(1x, a,a)')  "Git revision: ", VERSION
 #else
       write (*,'(1x, a)')    "Git revision: unknown"
+            
 #endif
       write (*,'(1x, a)')    "--------------------------------------------------------------"
 
-      ! Print compiler (deactivated due to pgf90 issues
+! Print compiler (deactivated due to pgf90 issues
 !#if (!defined __PATHSCALE__) || (!defined __PGIF90__ )
 !write (*,'(1x, a,a)')  "Fortran compiler: ", compiler_version()
 !#endif
-!      write (*,'(1x, a)')    "--------------------------------------------------------------"
+! write (*,'(1x, a)')    "--------------------------------------------------------------"
 
       ! Print if MKL RNG is enabled
 #ifdef VSL

@@ -464,7 +464,8 @@ contains
       end if
 
    end subroutine allocate_bqhamiltoniandata
-   
+
+
    !----------------------------------------------------------------------------
    !> @brief Allocate arrays for four-spin ring exchange Hamiltonian
    !----------------------------------------------------------------------------

@@ -66,6 +66,7 @@ module InputData
    integer, dimension(:,:), allocatable :: ind_mom              !< Flag to decide whether a moment is induced or not
    real(dblprec), dimension(:,:,:), allocatable :: ammom_inp    !< Magnetic moment magnitudes from input (for alloys)
    real(dblprec), dimension(:,:,:,:), allocatable :: aemom_inp  !< Magnetic moment directions from input (for alloys)
+   
 
    integer :: maptype                        !< Format for input data (1=direct format,2=bgfm style)
 
@@ -357,17 +358,20 @@ contains
       ham_inp%pdfile            = 'pdfile'
       ham_inp%do_pd             = 0
 
-      !Biquadratic DM data
-      ham_inp%biqdmfile         = 'biqdmfile'
-      ham_inp%do_biqdm          = 0
 
       !Biquadratic exchange data
       ham_inp%bqfile            = 'bqfile'
       ham_inp%do_bq             = 0
       
+      !Topological induced faraday effect data
+      ham_inp%tifefile          = 'tifefile'
+      ham_inp%do_tife           = 0
+
+
       !Four-spin ring exchange data
       ham_inp%ringfile          = 'ringfile'
       ham_inp%do_ring           = 0
+
 
       !Tensorial exchange (SKKR) data
       ham_inp%do_jtensor        = 0
@@ -740,6 +744,9 @@ contains
          allocate(ham_inp%bq_nn(NT),stat=i_stat)
          call memocc(i_stat,product(shape(ham_inp%bq_nn))*kind(ham_inp%bq_nn),'bq_nn','allocate_hamiltonianinput')
          ham_inp%bq_nn=0
+
+
+
          allocate(ham_inp%ring_nn(NT),stat=i_stat)
          call memocc(i_stat,product(shape(ham_inp%ring_nn))*kind(ham_inp%ring_nn),'ring_nn','allocate_hamiltonianinput')
          ham_inp%ring_nn=0         

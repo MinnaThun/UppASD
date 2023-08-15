@@ -59,6 +59,11 @@ module HamiltonianDataType
       integer, dimension(:), allocatable :: bqlistsize   !< Size of neighbour list for BQ
       integer, dimension(:,:), allocatable :: bqlist     !< List of neighbours for BQ
       real(dblprec), dimension(:,:), allocatable :: j_bq !< Biquadratic exchange couplings
+
+      ! Variables for TIFE 
+      !real(dblprec), dimension(3) :: epsilon    !< Light intensity vector
+      real(dblprec) ::  alpha_tife          !< material constant
+
       ! Variables for four-spin ring (4SR) exchange interactions
       integer :: max_no_ringneigh                          !< Calculated maximum number of neighbours for 4SR exchange 
       integer :: nn_ring_tot                               !< Calculated number of neighbours with 4SR interactions

@@ -1783,6 +1783,115 @@ subroutine f90wrap_ham_inp_t__array__bq_redcoord(this, nd, dtype, dshape, dloc)
     end if
 end subroutine f90wrap_ham_inp_t__array__bq_redcoord
 
+subroutine f90wrap_ham_inp_t__get__do_tife(this, f90wrap_do_tife)
+    use inputdatatype, only: ham_inp_t
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer, intent(in)   :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    integer, intent(out) :: f90wrap_do_tife
+    
+    this_ptr = transfer(this, this_ptr)
+    f90wrap_do_tife = this_ptr%p%do_tife
+end subroutine f90wrap_ham_inp_t__get__do_tife
+
+subroutine f90wrap_ham_inp_t__set__do_tife(this, f90wrap_do_tife)
+    use inputdatatype, only: ham_inp_t
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer, intent(in)   :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    integer, intent(in) :: f90wrap_do_tife
+    
+    this_ptr = transfer(this, this_ptr)
+    this_ptr%p%do_tife = f90wrap_do_tife
+end subroutine f90wrap_ham_inp_t__set__do_tife
+
+
+subroutine f90wrap_ham_inp_t__get__tifefile(this, f90wrap_tifefile)
+    use inputdatatype, only: ham_inp_t
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer, intent(in)   :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    character(35), intent(out) :: f90wrap_tifefile
+    
+    this_ptr = transfer(this, this_ptr)
+    f90wrap_tifefile = this_ptr%p%tifefile
+end subroutine f90wrap_ham_inp_t__get__tifefile
+
+subroutine f90wrap_ham_inp_t__set__tifefile(this, f90wrap_tifefile)
+    use inputdatatype, only: ham_inp_t
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer, intent(in)   :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    character(35), intent(in) :: f90wrap_tifefile
+    
+    this_ptr = transfer(this, this_ptr)
+    this_ptr%p%tifefile = f90wrap_tifefile
+end subroutine f90wrap_ham_inp_t__set__tifefile
+
+
+subroutine f90wrap_ham_inp_t__array__epsilon_tife(this, nd, dtype, dshape, dloc)
+    use inputdatatype, only: ham_inp_t
+    use, intrinsic :: iso_c_binding, only : c_int
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer(c_int), intent(in) :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    integer(c_int), intent(out) :: nd
+    integer(c_int), intent(out) :: dtype
+    integer(c_int), dimension(3), intent(out) :: dshape
+    integer*8, intent(out) :: dloc
+    
+    nd = 1
+    dtype = 12
+    this_ptr = transfer(this, this_ptr)
+    dshape = 3 ! Set the dimensions of the non-allocatable array
+    dloc = 0  ! Non-allocatable array has no memory location
+    
+end subroutine f90wrap_ham_inp_t__array__epsilon_tife
+
+
+subroutine f90wrap_ham_inp_t__get__alpha_tife(this, f90wrap_alpha_tife)
+    use inputdatatype, only: ham_inp_t
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer, intent(in)   :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    real(8), intent(out) :: f90wrap_alpha_tife
+    
+    this_ptr = transfer(this, this_ptr)
+    f90wrap_alpha_tife = this_ptr%p%alpha_tife
+end subroutine f90wrap_ham_inp_t__get__alpha_tife
+
+subroutine f90wrap_ham_inp_t__set__alpha_tife(this, f90wrap_alpha_tife)
+    use inputdatatype, only: ham_inp_t
+    implicit none
+    type ham_inp_t_ptr_type
+        type(ham_inp_t), pointer :: p => NULL()
+    end type ham_inp_t_ptr_type
+    integer, intent(in)   :: this(2)
+    type(ham_inp_t_ptr_type) :: this_ptr
+    real(8), intent(in) :: f90wrap_alpha_tife
+    
+    this_ptr = transfer(this, this_ptr)
+    this_ptr%p%alpha_tife = f90wrap_alpha_tife
+end subroutine f90wrap_ham_inp_t__set__alpha_tife
+
 subroutine f90wrap_ham_inp_t__get__do_ring(this, f90wrap_do_ring)
     use inputdatatype, only: ham_inp_t
     implicit none
