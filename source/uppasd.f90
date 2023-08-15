@@ -25,7 +25,6 @@
 !*                                                                *
 !******************************************************************
 
-
 !------------------------------------------------------------------------------------
 ! MODULE: uppasd
 !
@@ -274,6 +273,8 @@ contains
          call setup_tensor_hamiltonian(NA,Natom,Mensemble,simid,emomM,mmom)
          call timing(0,'SpinCorr      ','OF')
       end if
+
+
 
       write (*,'(1x,a)') "Enter measurement phase:"
 
@@ -631,6 +632,8 @@ contains
       call check_format()
 
       write(*,'(1x,a)') 'using new format'
+
+      
       ! Set defaults for KMC (ONLY FOR MAGNETIC POLARONS!)
       call init_kmc()
       ! Set defaults for Adiabatic Magnon Spectra calculations
@@ -743,6 +746,8 @@ contains
       rewind(ifileno)
       call read_parameters_3tm(ifileno)
       close(ifileno)
+
+      
       
        
       !----------------------------!
@@ -753,10 +758,11 @@ contains
             "Input data is inconsistent."//achar(10)// &
          " Please ensure consistency between simulation method and input parameters.")
       end if
-
       !----------------------------!
       ! Reading in data from files !
-      !----------------------------!
+      !----------------------------!  
+
+
     if (do_multiscale) then
      call initDampingBand(dampingBand)
      call newLocalInterpolationInfo(interfaceInterpolation)
@@ -938,6 +944,7 @@ contains
       if(ham_inp%do_pd==1)         call read_pddata()
       if(ham_inp%do_chir==1)       call read_chirdata()
       if(ham_inp%do_bq==1)         call read_bqdata()
+      if(ham_inp%do_tife==1)       call read_tifedata(Natom, Mensemble,emom)
       if(ham_inp%do_ring==1)       call read_ringdata()      
       if(ham_inp%do_biqdm==1)      call read_biqdmdata()
       if(do_ll==1)         call read_lldata()
@@ -979,7 +986,7 @@ contains
          write(*,'(a)') 'done'
       endif
 
-      ! See if it is necesary to read the temperature file
+      ! See if it is necessary to read the temperature file
       if(grad.eq.'Y') call read_temperature_legacy()
       !if(grad.eq.'Y'.or.grad.eq.'F') call read_temperature()
 
@@ -1503,6 +1510,7 @@ contains
 
       ! Print logo
       write (*,'(1x, a)')    "--------------------------------------------------------------"
+      write (*,'(1x, a)')    "--------------------------------------------------------------"
       write (*,'(1x, a)')    "            __  __          ___   _______    ____  ___        "
       write (*,'(1x, a)')    "           / / / /__  ___  / _ | / __/ _ \  / __/ / _ \       "
       write (*,'(1x, a)')    "          / /_/ / _ \/ _ \/ __ |_\ \/ // / / _ \_/ // /       "
@@ -1523,14 +1531,15 @@ contains
       write (*,'(1x, a,a)')  "Git revision: ", VERSION
 #else
       write (*,'(1x, a)')    "Git revision: unknown"
+            
 #endif
       write (*,'(1x, a)')    "--------------------------------------------------------------"
 
-      ! Print compiler (deactivated due to pgf90 issues
+! Print compiler (deactivated due to pgf90 issues
 !#if (!defined __PATHSCALE__) || (!defined __PGIF90__ )
 !write (*,'(1x, a,a)')  "Fortran compiler: ", compiler_version()
 !#endif
-!      write (*,'(1x, a)')    "--------------------------------------------------------------"
+! write (*,'(1x, a)')    "--------------------------------------------------------------"
 
       ! Print if MKL RNG is enabled
 #ifdef VSL
@@ -1609,6 +1618,7 @@ contains
       write (*,'(1x,a,1x,a)')     " Sample averages:", do_avrg
       write (*,'(1x,a,1x,a)')     " Sample moments:", do_tottraj
       write (*,'(1x,a,1x,a)')     " Spin correlation:", do_sc
+      write (*,'(1x,a)')          "------------------------------------------"
       write (*,'(1x,a)')          "------------------------------------------"
       write (*,'(1x,a)')          "        Progress of simulation:           "
 

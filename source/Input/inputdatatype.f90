@@ -110,6 +110,17 @@ module InputDataType
       integer, dimension(:), allocatable :: bq_nn        !< No. shells of neighbours for BQ
       real(dblprec), dimension(:,:,:,:), allocatable :: jc_bq        !< Biquadratic exchange coupling
       real(dblprec), dimension(:,:,:), allocatable :: bq_redcoord    !< Neighbour vectors for BQ
+
+
+      !---------------------------------------------------------------------------------
+      ! Topological induced farafay effect (TIFE)
+      !---------------------------------------------------------------------------------
+      integer :: do_tife                                   !< Add topological induced faraday effect (TIFE) term to Hamiltonian (0/1)
+      character(len=35) :: tifefile                        !< File name for TIFE data
+      complex(dblprec), dimension(3) :: epsilon_tife       !< Light intensity vector
+      real(dblprec) ::  alpha_tife                         !< material constant
+
+
       !---------------------------------------------------------------------------------
       ! Four-spin ring exchange data
       !---------------------------------------------------------------------------------

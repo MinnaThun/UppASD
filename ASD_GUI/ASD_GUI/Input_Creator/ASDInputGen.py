@@ -48,6 +48,7 @@ class ASDInputGen():
         ASDInputGen.restartfile=[]
         ASDInputGen.pdfile=[]
         ASDInputGen.bqfile=[]
+        ASDInputGen.tifefile=[]
         ASDInputGen.bqdmfile=[]
         ASDInputGen.momfile_gotten=False
         ASDInputGen.posfile_gotten=False
@@ -83,6 +84,8 @@ class ASDInputGen():
                 ASDInputGen.pdfile=dlg.selectedFiles()[0]
             if window.sender()==window.InpBqCheck and window.InpBqCheck.isChecked():
                 ASDInputGen.bqfile=dlg.selectedFiles()[0]
+            if window.sender()==window.InpTifeCheck and window.InpTifeCheck.isChecked():
+                ASDInputGen.tifefile=dlg.selectedFiles()[0]
             if window.sender()==window.InpBqDMCheck and window.InpBqDMCheck.isChecked():
                 ASDInputGen.bqdmfile=dlg.selectedFiles()[0]
             if window.sender()==window.InpSetIniMomfileButton:
@@ -189,6 +192,11 @@ class ASDInputGen():
             ASDInputGen.UppASDKeywords['Hamiltonian']['do_bq']=1
         else:
             ASDInputGen.UppASDKeywords['Hamiltonian']['do_bq']=0
+        if window.InpTifeCheck.isChecked():
+            ASDInputGen.UppASDKeywords['Hamiltonian']['tife']=ASDInputGen.tifefile
+            ASDInputGen.UppASDKeywords['Hamiltonian']['do_tife']=1
+        else:
+            ASDInputGen.UppASDKeywords['Hamiltonian']['do_tife']=0
         if window.InpBqCheck.isChecked():
             ASDInputGen.UppASDKeywords['Hamiltonian']['biqdm']=ASDInputGen.bqdmfile
             ASDInputGen.UppASDKeywords['Hamiltonian']['do_biqdm']=1
@@ -586,6 +594,8 @@ class ASDInputGen():
         ASDInputGen.UppASDKeywords['Hamiltonian']['pd']='./pdfile'
         ASDInputGen.UppASDKeywords['Hamiltonian']['do_bq']=0
         ASDInputGen.UppASDKeywords['Hamiltonian']['bq']='./bqfile'
+        ASDInputGen.UppASDKeywords['Hamiltonian']['do_tife']=0
+        ASDInputGen.UppASDKeywords['Hamiltonian']['tife']='./tifefile'
         ASDInputGen.UppASDKeywords['Hamiltonian']['do_biqdm']=0
         ASDInputGen.UppASDKeywords['Hamiltonian']['biqdm']='./biqdmfile'
         ASDInputGen.UppASDKeywords['Hamiltonian']['do_dip']=0
@@ -724,6 +734,12 @@ class ASDInputGen():
         if ASDInputGen.UppASDKeywords['Hamiltonian']['do_bq']==0:
             del ASDInputGen.UppASDKeywords['Hamiltonian']['do_bq']
             del ASDInputGen.UppASDKeywords['Hamiltonian']['bq']
+        
+        #Topological induced faraday effect flags
+        if ASDInputGen.UppASDKeywords['Hamiltonian']['do_tife']==0:
+            del ASDInputGen.UppASDKeywords['Hamiltonian']['do_tife']
+            del ASDInputGen.UppASDKeywords['Hamiltonian']['tife']
+    
         # Pseudo dipolar flags
         if ASDInputGen.UppASDKeywords['Hamiltonian']['do_pd']==0:
             del ASDInputGen.UppASDKeywords['Hamiltonian']['do_pd']

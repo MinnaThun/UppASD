@@ -58,7 +58,7 @@ contains
       use InducedMoments
       use HamiltonianData, only : allocate_hamiltoniandata, allocate_anisotropies,  &
          allocate_dmhamiltoniandata, allocate_pdhamiltoniandata,                    &
-         allocate_biqdmhamiltoniandata, allocate_bqhamiltoniandata,                 &
+         allocate_biqdmhamiltoniandata, allocate_bqhamiltoniandata,                 &                                       
          allocate_chirhamiltoniandata, allocate_ringhamiltoniandata, ham,           &
          allocate_fourxhamiltoniandata, allocate_sahamiltoniandata
       use PrintHamiltonian
@@ -750,6 +750,9 @@ contains
             write(*,'(a)') ' done'
          end if
       endif
+
+
+
 
       if(ham_inp%do_ring==1) then
          !		if(do_ralloy==1) then

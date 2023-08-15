@@ -1,0 +1,47 @@
+{
+             "simid"  :    "bcc_Fe_T" ,
+             "ncell"  :    [        6 ,        6 ,        6 ] , 
+                "bc"  :    [ "P" , "P" , "P" ] , 
+              "cell"  :  [
+                           [    1.00000     ,    0.00000     ,    0.00000     ] , 
+                           [    0.00000     ,    1.00000     ,    0.00000     ] , 
+                           [    0.00000     ,    0.00000     ,    1.00000     ]  
+                         ],
+         "anumb_inp"  :    [        1 ,        2 ] , 
+         "atype_inp"  :    [        1 ,        1 ] , 
+               "bas"  :  [
+                           [    0.00000     ,    0.00000     ,    0.00000     ] , 
+                           [   0.500000     ,   0.500000     ,   0.500000     ]  
+                         ],
+                "na"  :         2 ,
+                "nt"  :         1 ,
+               "sym"  :         1 ,
+               "llg"  :         1 ,
+           "sdealgh"  :         1 ,
+         "mensemble"  :         1 ,
+           "initmag"  :         3 ,
+           "moments"  :  [
+                           [    1.00000     ,    0.00000     ,    0.00000     ] , 
+                           [    1.00000     ,    0.00000     ,    0.00000     ]  
+                         ],
+           "ip_mode"  :    "H" ,
+         "ip_hfield"  :    [    0.00000     ,    0.00000     ,    0.00000     ] , 
+       "ip_mcanneal"  :         1 ,
+        "ip_mcnstep"  :      2000 ,
+           "ip_temp"  :     500.000     ,
+              "mode"  :   "H" ,
+              "temp"  :     500.000     ,
+            "hfield"  :    [    0.00000     ,    0.00000     ,    0.00000     ] , 
+           "mcnstep"  :      3000 ,
+ "real_time_measure"  :   "N" ,
+           "do_avrg"  :   "Y" ,
+         "avrg_step"  :        50 ,
+        "do_tottraj"  :   "N" ,
+           "do_cumu"  :   "Y" ,
+         "cumu_step"  :        50 ,
+        "plotenergy"  :         1 ,
+       "do_spintemp"  :   "N" ,
+             "ntraj"  :         0 ,
+             "do_sc"  :    "N" ,
+           "comment"  :    "Input data from UppASD simulation" 
+  } 

@@ -631,6 +631,8 @@ class UppASDVizMainWindow(QMainWindow):
             self.EneIndx.append(9)
         if self.EneChirCheck.isChecked():
             self.EneIndx.append(10)
+        if self.EneTifeCheck.isChecked():
+            self.EneIndx.append(11)
         self.PlottingWrapper()
         return
         return
@@ -1373,7 +1375,7 @@ class UppASDVizMainWindow(QMainWindow):
         if self.sender()==self.BqEneButton and self.BqEneButton.isChecked():
             self.EneActors.src.GetPointData().SetScalars(self.ASDdata.energies[4])
             self.EneActors.EneMapper.SetScalarRange(self.EneActors.src.GetScalarRange())
-            #self.EneActors.EneDensMap.SetScalarRange(self.EneActors.src.GetScalarRange())
+            #self.EneActors.EneDensMap.SetScalarRange(self.EneActors.src.GetScalarRange())            
             self.ASDGenActors.clipperMapper.SetScalarRange(self.EneActors.src.GetScalarRange())
         if self.sender()==self.BqDMEneButton and self.BqDMEneButton.isChecked():
             self.EneActors.src.GetPointData().SetScalars(self.ASDdata.energies[5])
@@ -1397,6 +1399,11 @@ class UppASDVizMainWindow(QMainWindow):
             self.ASDGenActors.clipperMapper.SetScalarRange(self.EneActors.src.GetScalarRange())
         if self.sender()==self.ChirEneButton and self.ChirEneButton.isChecked():
             self.EneActors.src.GetPointData().SetScalars(self.ASDdata.energies[9])
+            self.EneActors.EneMapper.SetScalarRange(self.EneActors.src.GetScalarRange())
+            #self.EneActors.EneDensMap.SetScalarRange(self.EneActors.src.GetScalarRange())
+            self.ASDGenActors.clipperMapper.SetScalarRange(self.EneActors.src.GetScalarRange())
+        if  self.sender()==self.TifeEneButton and self.TifeEneButton.isChecked():
+            self.EneActors.src.GetPointData().SetScalars(self.ASDdata.energies[10])
             self.EneActors.EneMapper.SetScalarRange(self.EneActors.src.GetScalarRange())
             #self.EneActors.EneDensMap.SetScalarRange(self.EneActors.src.GetScalarRange())
             self.ASDGenActors.clipperMapper.SetScalarRange(self.EneActors.src.GetScalarRange())

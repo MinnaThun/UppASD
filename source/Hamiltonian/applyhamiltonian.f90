@@ -31,7 +31,8 @@ contains
          do_dm, max_no_dmneigh, dm_vect, dmlist, dmlistsize, &
          do_pd, nn_pd_tot, pd_vect, pdlist, pdlistsize, &
          do_biqdm, nn_biqdm_tot, biqdm_vect, biqdmlist, biqdmlistsize, & !for BIQDM
-         do_bq, nn_bq_tot, j_bq, bqlist, bqlistsize, &
+         do_bq, nn_bq_tot, j_bq, bqlist, bqlistsize, & 
+         do_tife,  &
          taniso, eaniso, kaniso, sb, beff, beff1, beff2, &
          emomM, emom, external_field, do_dip, Qdip)
       !
@@ -64,6 +65,7 @@ contains
       real(dblprec), dimension(nn_bq_tot,Natom), intent(in) :: j_bq !< Biquadratic exchange couplings
       integer, dimension(nn_bq_tot,Natom), intent(in) :: bqlist   !< List of neighbours for BQ
       integer, dimension(Natom),intent(in) :: bqlistsize !< Size of neighbour list for BQ
+      integer, intent(in) :: do_tife   !< Add topological induced faraday effect (TIFE) term to Hamiltonian (0/1)
       integer, dimension(Natom),intent(in) :: taniso !< Type of anisotropy (0-2)
       real(dblprec), dimension(Natom),intent(in) :: sb !< Ratio between the anisotropies
       real(dblprec), dimension(3,Natom), intent(in) :: eaniso !< Unit anisotropy vector
@@ -163,6 +165,9 @@ contains
                ttz(k) = ttz(k)+ 2.0d0*j_bq(j,i)*bqmdot(k)*emomM(3,bqlist(j,i),k)
             end do
          end if
+
+
+         !TIFE term
 
          ! Dipolar term
          if(present(Qdip)) then
@@ -275,6 +280,7 @@ contains
    subroutine heisge_tens(Natom, Mensemble, max_no_neigh, j_tens, nlist, nlistsize, &
          do_biqdm, nn_biqdm_tot, biqdm_vect, biqdmlist, biqdmlistsize, &
          do_bq, nn_bq_tot, j_bq, bqlist, bqlistsize, &
+         do_tife,  &
          taniso, eaniso, kaniso, sb, beff, beff1, beff2, &
          emomM, external_field)
       !
@@ -296,7 +302,8 @@ contains
       integer, intent(in) :: nn_bq_tot !< Calculated number of neighbours with BQ interactions
       real(dblprec), dimension(nn_bq_tot,Natom), intent(in) :: j_bq !< Biquadratic exchange couplings
       integer, dimension(nn_bq_tot,Natom), intent(in) :: bqlist   !< List of neighbours for BQ
-      integer, dimension(Natom),intent(in) :: bqlistsize !< Size of neighbour list for BQ
+      integer, dimension(Natom),intent(in) :: bqlistsize !< Size of neighbour list for BQ    
+      integer, intent(in) :: do_tife   !< Add topological induced faraday effect (TIFE) term to Hamiltonian (0/1)
       integer, dimension(Natom),intent(in) :: taniso !< Type of anisotropy (0-2)
       real(dblprec), dimension(Natom),intent(in) :: sb !< Ratio between the anisotropies (Cubic and Uniaxial)
       real(dblprec), dimension(3,Natom), intent(in) :: eaniso !< Unit anisotropy vector
@@ -635,6 +642,12 @@ contains
       real(dblprec), dimension(nn_bq_tot,Natom), intent(in) :: j_bq !< Biquadratic exchange couplings
       integer, dimension(nn_bq_tot,Natom), intent(in) :: bqlist   !< List of neighbours for BQ
       integer, dimension(Natom),intent(in) :: bqlistsize !< Size of neighbour list for BQ
+
+      integer, intent(in) :: do_tife   !< Add topological induced faraday effect (TIFE) term to Hamiltonian (0/1)
+
+
+
+
       integer, dimension(Natom),intent(in) :: taniso !< Type of anisotropy (0-2)
       real(dblprec), dimension(Natom),intent(in) :: sb !< Ratio between the anisotropies
       real(dblprec), dimension(3,Natom), intent(in) :: eaniso !< Unit anisotropy vector
@@ -732,6 +745,8 @@ contains
                ttz(k) = ttz(k)+ 2.0d0*j_bq(j,i)*bqmdot(k)*emomM(3,bqlist(j,i),k)
             end do
          end if
+
+         !TIFE term
 
          ! Dipolar term
          if(present(Qdip)) then

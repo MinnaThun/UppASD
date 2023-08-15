@@ -655,6 +655,8 @@ contains
 
    end subroutine prn_bqcoup
 
+
+
   !> Print strength of four-spin ring couplings
   subroutine prn_ringcoup(Natom, nn_ring_tot, ringlist, ringlistsize, j_ring, simid)
     !

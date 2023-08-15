@@ -576,6 +576,8 @@ contains
             field = field + 2.0_dblprec*ham%j_bq(j,ih)*dot*emomM(1:3,ham%bqlist(j,i),k)
          end do
       end subroutine biquadratic_field
+
+
       
 	  !---------------------ring_field--------------------!
 	  subroutine ring_field(i, k, field,Natom,Mensemble,emomM)

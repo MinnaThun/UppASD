@@ -112,7 +112,7 @@ contains
       integer, intent(out) :: do_copy !< Flag if copy or not
 
       call do_measurements(cmstep,do_avrg,do_tottraj,avrg_step,ntraj,tottraj_step,  &
-         traj_step,do_cumu,cumu_step,logsamp,do_copy)
+              traj_step,do_cumu,cumu_step,logsamp,do_copy)
    end subroutine fortran_do_measurements
 
 
