@@ -1,5 +1,5 @@
 #! /bin/bash 
-for Temp in 100 200 300 400 500 600 700 800 900 950 1000 1100 1200 1300 1400 1500 1600
+for Temp in 100 200
 do
     mkdir T$Temp/ 2>/dev/null
     echo "Temp: " $Temp
